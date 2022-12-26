@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 
-export function EditTodo({ todo, todos, setTodos }) {
+export const EditTodo = forwardRef(({ todo, todos, setTodos }, ref) => {
   const [currentTodo, setCurrentTodo] = useState(todo.name);
 
   function handleDone() {
@@ -11,7 +11,7 @@ export function EditTodo({ todo, todos, setTodos }) {
   }
 
   function handleKeyDown(e) {
-    if ( e.key === "Enter") {
+    if (e.key === "Enter") {
     handleDone();
     }
   }
@@ -19,12 +19,15 @@ export function EditTodo({ todo, todos, setTodos }) {
   return (
     <div key={todo.id} className="todo">
       <input
+        ref={ref}
         value={currentTodo}
         placeholder="Enter a todo"
         onChange={(e) => setCurrentTodo(e.target.value)}
-        // onKeyDown={handleKeyDown}
+        onKeyDown={handleKeyDown}
       ></input>
       <button onClick={handleDone}>Done</button>
     </div>
   );
-}
+})
+
+

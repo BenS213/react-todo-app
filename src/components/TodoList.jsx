@@ -1,6 +1,12 @@
 import { EditTodo } from "./EditTodo";
+import { useRef, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
+
 
 export default function TodoList({ todos, setTodos }) {
+  const inputRef = useRef();
 
   function handleDelete(id) {
     const remainingTodos = todos.filter((todo) => {
@@ -18,6 +24,10 @@ export default function TodoList({ todos, setTodos }) {
     setTodos([...todos]);
   }
 
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // },[todos])
+
   return (
     <div className="todos">
       {todos.map((todo) =>
@@ -30,14 +40,14 @@ export default function TodoList({ todos, setTodos }) {
                   handleEdit(todo);
                 }}
               >
-                Edit
+                <FontAwesomeIcon icon={solid('pen-to-square')} />
               </button>
               <button
                 onClick={() => {
                   handleDelete(todo.id);
                 }}
               >
-                Delete
+                <FontAwesomeIcon icon={solid("trash-can")} />
               </button>
               <input
                 type="checkbox"
@@ -49,7 +59,7 @@ export default function TodoList({ todos, setTodos }) {
             </div>
           </div>
         ) : (
-          <EditTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />
+          <EditTodo ref={inputRef} key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />
         )
       )}
       {todos.length ? <button className="deleteBtn"onClick={() => {setTodos([])}}>Delete All</button> : null}
