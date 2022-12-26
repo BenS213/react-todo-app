@@ -14,7 +14,7 @@ export default function InputForm({ todos, setTodos }) {
     const todoObj = {
       name: input,
       id: uuidv4(),
-      checked: false,
+      checked: false, 
       isEditing: false,
     };
 

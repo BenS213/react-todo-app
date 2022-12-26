@@ -7,15 +7,14 @@ import { useState } from "react"
 function App() {
   const [todos, setTodos] = useState(() => {
     const todoItems = localStorage.getItem("TODOs");
-
-    if (todoItems) return JSON.parse(todoItems);
+     if (todoItems) return JSON.parse(todoItems);
     return [];
   });
 
   return (
     <div className="App">
      <header>
-      <h1>Ben's TODO List</h1>
+      <h1>React TODO List</h1>
       </header>
       <main>
       <InputForm todos={todos} setTodos={setTodos} />

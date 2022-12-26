@@ -10,12 +10,19 @@ export function EditTodo({ todo, todos, setTodos }) {
     setTodos([...todos]);
   }
 
+  function handleKeyDown(e) {
+    if ( e.key === "Enter") {
+    handleDone();
+    }
+  }
+
   return (
     <div key={todo.id} className="todo">
       <input
         value={currentTodo}
         placeholder="Enter a todo"
         onChange={(e) => setCurrentTodo(e.target.value)}
+        // onKeyDown={handleKeyDown}
       ></input>
       <button onClick={handleDone}>Done</button>
     </div>

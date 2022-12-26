@@ -1,10 +1,10 @@
 import { EditTodo } from "./EditTodo";
 
 export default function TodoList({ todos, setTodos }) {
+
   function handleDelete(id) {
     const remainingTodos = todos.filter((todo) => {
-      return todo.id !== id;
-    });
+      return todo.id !== id });
     setTodos(remainingTodos);
   }
 
@@ -15,7 +15,6 @@ export default function TodoList({ todos, setTodos }) {
 
   function handleEdit(todo) {
     todo.isEditing ? (todo.isEditing = false) : (todo.isEditing = true);
-    // todo.name = currentTodo;
     setTodos([...todos]);
   }
 
@@ -43,14 +42,14 @@ export default function TodoList({ todos, setTodos }) {
               <input
                 type="checkbox"
                 checked={todo.checked}
-                onClick={() => {
+                onChange={() => {
                   handleCheck(todo);
                 }}
               ></input>
             </div>
           </div>
         ) : (
-          <EditTodo todo={todo} todos={todos} setTodos={setTodos} />
+          <EditTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />
         )
       )}
       {todos.length ? <button className="deleteBtn"onClick={() => {setTodos([])}}>Delete All</button> : null}
