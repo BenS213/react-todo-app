@@ -32,7 +32,6 @@ export default function InputForm({ todos, setTodos }) {
 
   return (
     <form onSubmit={submitHandler}>
-      <label htmlFor="input">TODO</label>
       <input
         id="input"
         placeholder="Enter a todo"

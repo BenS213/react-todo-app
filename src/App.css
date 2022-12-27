@@ -1,3 +1,7 @@
+#root {
+  --primary-color: goldenrod;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,17 +14,12 @@ body {
 header {
   padding: 10px;
   margin: 0;
-  background-color: goldenrod;
+  background-color: var(--primary-color);
   text-align: center;
 }
 
-main {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  margin: 50px 0;
-}
 form {
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -29,18 +28,21 @@ form {
 .todos {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
+  margin: 0px auto;
+  max-width: 600px;
 }
 
 .todo {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
+  align-items: center;
+  margin: 5px 0;
   padding: 5px;
-  border: 2px solid goldenrod;
-  min-width: 500px;
-  text-align: left;
+  border: 2px solid var(--primary-color);
+}
+
+.checkBox {
+  margin-right: 5px;
 }
 
 .checked {
@@ -53,7 +55,7 @@ margin: 0 5px;
 }
 
 .deleteBtn {
-  margin: 0 auto;
+margin: auto;
 }
 
 button {

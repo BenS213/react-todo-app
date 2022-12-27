@@ -3,8 +3,6 @@ import { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-
-
 export default function TodoList({ todos, setTodos }) {
   const inputRef = useRef();
 
@@ -29,40 +27,46 @@ export default function TodoList({ todos, setTodos }) {
   // },[todos])
 
   return (
-    <div className="todos">
+    <ul className="todos">
       {todos.map((todo) =>
         !todo.isEditing ? (
-          <div key={todo.id} className={todo.checked ? "todo checked" : "todo"}>
-            {todo.name}
-            <div className="actions">
-              <button
-                onClick={() => {
-                  handleEdit(todo);
-                }}
-              >
-                <FontAwesomeIcon icon={solid('pen-to-square')} />
-              </button>
-              <button
-                onClick={() => {
-                  handleDelete(todo.id);
-                }}
-              >
-                <FontAwesomeIcon icon={solid("trash-can")} />
-              </button>
-              <input
+          <li key={todo.id} className={todo.checked ? "todo checked" : "todo"}>
+            <div className="todoItem">
+                 <input
+                className="checkBox"
                 type="checkbox"
                 checked={todo.checked}
                 onChange={() => {
                   handleCheck(todo);
                 }}
               ></input>
+              <span>
+            {todo.name}
+            </span>
             </div>
-          </div>
+            <div className="actions">
+              <button
+                onClick={() => {
+                  handleEdit(todo);
+                }}
+              >
+                <FontAwesomeIcon icon={regular('pen-to-square')} />
+              </button>
+              <button
+                onClick={() => {
+                  handleDelete(todo.id);
+                }}
+              >
+                <FontAwesomeIcon icon={regular("trash-can")} />
+              </button>
+         
+            </div>
+          </li>
         ) : (
           <EditTodo ref={inputRef} key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />
         )
       )}
       {todos.length ? <button className="deleteBtn"onClick={() => {setTodos([])}}>Delete All</button> : null}
-    </div>
+    </ul>
   );
 }
