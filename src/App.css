@@ -1,5 +1,5 @@
 #root {
-  --primary-color: goldenrod;
+  --primary-color: #daa520;
 }
 
 * {
@@ -29,7 +29,7 @@ form {
   display: flex;
   flex-direction: column;
   margin: 0px auto;
-  max-width: 600px;
+  max-width: min(600px, 95vw);
 }
 
 .todo {
@@ -48,14 +48,16 @@ form {
 .checked {
   color: gray;
   text-decoration: line-through;
+  background-color: rgb(232, 232, 232);
+  border: 2px solid #aea07d;
 }
 
 .actions > * {
-margin: 0 5px;
+  margin: 0 5px;
 }
 
 .deleteBtn {
-margin: auto;
+  margin: auto;
 }
 
 button {
