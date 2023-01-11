@@ -33,16 +33,21 @@ form {
 }
 
 .todo {
+  font-size: larger;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 5px 0;
-  padding: 5px;
+  padding: 8px;
   border: 2px solid var(--primary-color);
+  background-color: white;
+  border-radius: 6px;
+  touch-action: none;
 }
 
 .checkBox {
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .checked {
@@ -51,15 +56,60 @@ form {
   background-color: rgb(232, 232, 232);
   border: 2px solid #aea07d;
 }
-
-.actions > * {
-  margin: 0 5px;
+.actions {
+  display: flex;
+  margin-left: auto;
 }
 
-.deleteBtn {
-  margin: auto;
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.grip {
+  color: var(--primary-color);
+  padding: 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  background-color: rgb(237, 237, 237);
+  transition: 100ms ease;
+}
+
+.grip:hover {
+  background-color: rgb(193, 193, 193);
+  color: gray;
+}
+
+.btns:after {
+  content: "";
+  width: 2px;
+  background-color: var(--primary-color);
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
 }
 
 button {
   padding: 2px 4px;
+}
+
+.deleteBtn {
+  background-color: var(--primary-color); 
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: #aea07d;
 }
